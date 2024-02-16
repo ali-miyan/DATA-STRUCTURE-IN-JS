@@ -1,0 +1,28 @@
+# JavaScript Data Structures Practice
+
+Welcome to the JavaScript Data Structures Practice repository! This repository is dedicated to practicing various data structures implemented in JavaScript.
+
+![Data Structures](data_structures.gif)
+
+## Overview
+
+This repository contains JavaScript implementations of fundamental data structures such as:
+
+- Arrays
+- Linked Lists
+- Stacks
+- Queues
+- Trees
+- Graphs
+- Hash Tables
+
+Each data structure is implemented with clear explanations and examples to help you understand and practice using them effectively.
+
+## Getting Started
+
+To get started with practicing data structures in JavaScript, follow these steps:
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/js-data-structures-practice.git
