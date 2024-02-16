@@ -2,7 +2,7 @@
 
 Welcome to the JavaScript Data Structures Practice repository! This repository is dedicated to practicing various data structures implemented in JavaScript.
 
-![Data Structures](data_structures.gif)
+![Data Structures]([data_structures.gif](https://www.google.com/url?sa=i&url=https%3A%2F%2Fin.pinterest.com%2Fpin%2Fvisualgo-visualising-data-structures-and-algorithms-through-animation--219409813075988069%2F&psig=AOvVaw1DlV5UoZCP36bXqTXtRjvk&ust=1708186816135000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOjb5_ShsIQDFQAAAAAdAAAAABAE))
 
 ## Overview
 
