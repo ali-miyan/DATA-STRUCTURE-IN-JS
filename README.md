@@ -2,7 +2,7 @@
 
 Welcome to the JavaScript Data Structures Practice repository! This repository is dedicated to practicing various data structures implemented in JavaScript.
 
-![Data Structures](giphy (1).gif)
+![Data Structures](gif.gif)
 
 ## Overview
 
