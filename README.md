@@ -2,7 +2,7 @@
 
 Welcome to the JavaScript Data Structures Practice repository! This repository is dedicated to practicing various data structures implemented in JavaScript.
 
-<a href="https://www.facebook.com/amaltscaria" target="_blank" rel="noreferrer"><img src="[https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/facebook.svg](https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fstickers%2FSiemensHealthineers-data-big-rubiscube-IUNycHoVqvLDowiiam&psig=AOvVaw0BKKwgxhna7hy_0IVcvNiV&ust=1708220628401000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCH_O-fsYQDFQAAAAAdAAAAABAE)" width="32" height="32" /></a>
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fstickers%2FSiemensHealthineers-data-big-rubiscube-IUNycHoVqvLDowiiam&psig=AOvVaw0BKKwgxhna7hy_0IVcvNiV&ust=1708220628401000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCH_O-fsYQDFQAAAAAdAAAAABAE"/><
 
 
 ## Overview
