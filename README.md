@@ -2,7 +2,8 @@
 
 Welcome to the JavaScript Data Structures Practice repository! This repository is dedicated to practicing various data structures implemented in JavaScript.
 
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fstickers%2FSiemensHealthineers-data-big-rubiscube-IUNycHoVqvLDowiiam&psig=AOvVaw0BKKwgxhna7hy_0IVcvNiV&ust=1708220628401000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCH_O-fsYQDFQAAAAAdAAAAABAE"/><
+<img src="https://media.giphy.com/media/IUNycHoVqvLDowiiam/giphy.gif
+"/><
 
 
 ## Overview
