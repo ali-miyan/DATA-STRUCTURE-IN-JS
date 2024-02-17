@@ -2,7 +2,7 @@
 
 Welcome to the JavaScript Data Structures Practice repository! This repository is dedicated to practicing various data structures implemented in JavaScript.
 
-<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWtweWJqdDI1eG4yMDVwaW8xZTdzOHprZHh2NXlpYm5qcjdraGl3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/IUNycHoVqvLDowiiam/giphy.gif" alt="Alt Text" width="200" height="200">
+<img src="https://media.tenor.com/1SQbcZw13UQAAAAi/storage-in-big-data-market.gif" alt="Alt Text" width="200" height="200">
 
 ## Overview
 
