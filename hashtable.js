@@ -74,7 +74,7 @@ hash.print()
 const map = new Map()
 const result = []
 
-let arr = ['a','a','a','l','d','f']
+// let arr = ['a','a','a','l','d','f']
 
 for(let i = 0; i < arr.length; i++){
   if(!hash.get(arr[i])){
@@ -104,3 +104,28 @@ for (let i = 0; i < arr.length; i++) {
   }
 }
 console.log(map);
+
+
+
+//////////////////////////////////////////LEET CODE 448:Find All Numbers Disappeared in an Array///////////////
+
+
+var findDisappearedNumbers = function(nums) {
+  let obj ={}
+  let arr = []
+
+  for(let i = 0; i < nums.length; i++){
+      obj[nums[i]] = true
+  }
+  for(let i = 1; i <= nums.length; i++){
+      if(!obj[i]){
+          arr.push(i)
+      }
+  }
+
+  return arr
+  
+};
+
+const ans = findDisappearedNumbers([4,3,2,7,8,2,3,1])
+console.log(ans);//OUTPUT [5,6]
