@@ -129,3 +129,22 @@ var findDisappearedNumbers = function(nums) {
 
 const ans = findDisappearedNumbers([4,3,2,7,8,2,3,1])
 console.log(ans);//OUTPUT [5,6]
+
+
+
+
+//////////////////////////////////////////LEET CODE 268. Missing Number ////////////////////////////////
+
+var missingNumber = function(nums) {
+  let hash = {}
+  for(let i = 0; i < nums.length; i++){
+      hash[nums[i]] = true
+  }
+  for(let i = 0; i <= nums.length; i++){
+      if(!hash[i]){
+          return i
+      }
+  }
+};  
+
+console.log(missingNumber([0,4,3,5,1]));//OUTPUT[2]
