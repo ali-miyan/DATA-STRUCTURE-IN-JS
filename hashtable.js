@@ -147,4 +147,4 @@ var missingNumber = function(nums) {
   }
 };  
 
-console.log(missingNumber([0,4,3,5,1]));//OUTPUT[2]
+console.log(missingNumber([0,4,3,5,1]));//OUTPUT[2]  
