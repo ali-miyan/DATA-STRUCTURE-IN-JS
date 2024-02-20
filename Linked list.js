@@ -121,7 +121,7 @@ class Node{
     }
   }
   
-  class linkedList{
+  class linkedList2{
     constructor(){
       this.head = null
       this.tail = null
@@ -196,7 +196,7 @@ class Node{
     }
   }
   
-  removeDuplicate(){
+  removeConsicutiveDuplicates(){
     let curr = this.head
     while(curr){
       let dup = curr.next
@@ -210,6 +210,21 @@ class Node{
     }
   }
   
+  removeDuplicates() {
+    let current = this.head;
+
+    while (current !== null) {
+        let runner = current;
+        while (runner.next !== null) {
+            if (runner.next.data === current.data) {
+                runner.next = runner.next.next;
+            } else {
+                runner = runner.next;
+            }
+        }
+        current = current.next;
+        }
+    }
   
   delwithoutTail(){
     let curr = this.head
@@ -286,35 +301,36 @@ class Node{
     }
   }
   
-  const list2 = new linkedList()
+  const list2 = new linkedList2()
   
   
-  list2.insertData(1)
-  list2.insertData(2)
-  list2.insertData(3)
-  list2.insertData(4)
-  list2.insertData(5)
+  // list2.insertData(1)
+  // list2.insertData(2)
+  // list2.insertData(3)
+  // list2.insertData(4)
+  // list2.insertData(5)
   
-  list2.deleteFirst()
-  list2.deleteLast()
-  list2.delwithoutTail()
-  list2.deleteVal(3)
-  list2.deleteValSingle(3)
-  list2.removeDuplicate()
+  // list2.deleteFirst()
+  // // list2.deleteLast()
+  // list2.delwithoutTail()
+  // list2.deleteVal(3)
+  // list2.deleteValSingle(3)
+  // list2.removeDuplicates()
+  // list2.removeConsicutiveDuplicates()
   
-  list2.putAfter(3,100)
-  list2.putAfterandBefore(3,500)
-  list2.putBefore(3,120)
-  list2.insertMiddle(100)
-  list2.middleMan(99)
+  // list2.putAfter(3,100)
+  // list2.putAfterandBefore(3,500)
+  // list2.putBefore(3,120)
+  // list2.insertMiddle(100)
+  // list2.middleMan(99)
   
-  list2.printReverse()
+  // list2.printReverse()
   
   
-  list2.print()
-  console.log('reversed');
-  list2.printReverseSingle()
-  list2.print()
+  // list2.print()
+  // console.log('reversed');
+  // list2.printReverseSingle()
+  // list2.print()
 
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
