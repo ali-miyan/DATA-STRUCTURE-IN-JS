@@ -181,3 +181,22 @@ console.log(findIntersectionValues([4,3,2,3,1],[2,2,5,2,3,6]));//Output: [3,4]
 // Explanation: We calculate the values as follows:
 // - The elements at indices 1, 2, and 3 in nums1 occur at least once in nums2. So the first value is 3.
 // - The elements at indices 0, 1, 3, and 4 in nums2 occur at least once in nums1. So the second value is 4.
+
+
+///////////////////////////////////LEET CODE : 771. Jewels and Stones/////////////////////////////////////////
+
+var numJewelsInStones = function(jewels, stones) {
+  let map = new Map()
+  for(let i = 0; i < jewels.length; i++){
+      map.set(jewels[i],true)
+  }
+  let count = 0
+  for(let i = 0; i < stones.length; i++){
+      if(map.has(stones[i])){
+          count++
+      }
+  }
+  return count
+};
+
+console.log(numJewelsInStones('aA',"aAAbbbb")); //Output: 3
