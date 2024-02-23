@@ -200,3 +200,34 @@ var numJewelsInStones = function(jewels, stones) {
 };
 
 console.log(numJewelsInStones('aA',"aAAbbbb")); //Output: 3
+
+
+
+/////////////////////////////////////////2965. Find Missing and Repeated Values///////////////////////////////
+
+var findMissingAndRepeatedValues = function(grid) {
+  let arr = []
+  let map = new Map()
+  let count = 0;
+  for(let i=0;i<grid.length;i++){
+      for(let j = 0; j < grid[i].length; j++){
+          if(map.has(grid[i][j])){
+              arr.push(grid[i][j])
+          }else{
+          map.set(grid[i][j],true)
+          }
+          count++
+      }
+  }
+
+  for(let i = 1; i <= count; i++){
+      if(!map.has(i)){
+          arr.push(i)
+      }
+  }
+  return arr
+};
+
+console.log(findMissingAndRepeatedValues([[1,3],[2,2]]));// Output: [2,4]
+// Explanation: Number 2 is repeated and number 4 is missing so the answer is [2,4].
+

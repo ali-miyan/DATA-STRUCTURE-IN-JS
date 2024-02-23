@@ -172,7 +172,8 @@ class Node{
       curr = curr.next
     }
   }
-  
+
+
   putBefore(x,data){
     let curr = this.head
     const nodeData = new Node(data)
@@ -247,9 +248,7 @@ class Node{
     let store = one.next
     one.next = nodeData
     nodeData.next = store
-  
     console.log(one.data,'dat');
-  
   }
   
   
@@ -309,7 +308,7 @@ class Node{
   // list2.insertData(3)
   // list2.insertData(4)
   // list2.insertData(5)
-  
+    
   // list2.deleteFirst()
   // // list2.deleteLast()
   // list2.delwithoutTail()
