@@ -231,3 +231,23 @@ var findMissingAndRepeatedValues = function(grid) {
 console.log(findMissingAndRepeatedValues([[1,3],[2,2]]));// Output: [2,4]
 // Explanation: Number 2 is repeated and number 4 is missing so the answer is [2,4].
 
+////////////////////////////1941. Check if All Characters Have Equal Number of Occurrences/////////////////
+
+var areOccurrencesEqual = function(s) {
+  let map = new Map()
+  for(let i = 0; i < s.length; i++){
+      if(map.has(s[i])){
+          map.set(s[i],map.get(s[i])+1)
+      }else{
+          map.set(s[i],1)
+      }
+  }
+
+  let set = new Set(map.values());
+  return set.size === 1;
+};
+
+console.log(areOccurrencesEqual('abacbc'));//Output: true
+//Explanation: The characters that appear in s are 'a', 'b', and 'c'. All characters occur 2 times in s.
+
+////////////////////////////////////////////////////////////////////////////////////////////////
