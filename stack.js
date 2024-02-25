@@ -10,15 +10,13 @@ class Node{
 class listStack{
   constructor(){
     this.top = null
-    this.bottom = null
     this.size = 0
   }
 
   push(data){
     const nodeData = new Node(data)
-    if(this.bottom == null){
+    if(this.top == null){
       this.top = nodeData
-      this.bottom = nodeData
     }else{
       nodeData.next = this.top
       this.top = nodeData
@@ -33,7 +31,6 @@ class listStack{
   peek(){
     return this.top.data
   }
-
   print(){
     let curr = this.top
     while(curr){

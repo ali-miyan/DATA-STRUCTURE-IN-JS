@@ -97,10 +97,7 @@ const que = new queueObj()
 que.enqueue(1)
 que.enqueue(2)
 que.enqueue(3)
-
 que.dequeue()
-
-
 console.log(que.size());
 que.print()
 
@@ -145,14 +142,11 @@ class Queue{
   }
 }
 
-
 const q = new Queue()
 q.enqueue(1)
 q.enqueue(2)
 q.enqueue(3)
-
 // q.dequeue()
-
 console.log('emty?', q.isEmpty());
 console.log('size:', q.size());
 q.print()
