@@ -53,6 +53,21 @@ class Tree {
     //     }
     
     // }
+
+    search(data){
+        let curr = this.root
+        while(curr){
+            if(curr.data == data){
+                return true
+            }else if(data < curr.data){
+                curr = curr.left
+            }else{
+                curr = curr.right
+            }
+        }
+        return false
+    }
+
     insertNormal(data) {
         let nodeData = new Node(data)
         if(this.root == null){
@@ -60,12 +75,13 @@ class Tree {
             return
         }
         let curr = this.root
+
         while(true){
             if(curr.data > data){
-                if (curr.left == null) {
+                if(curr.left == null){  
                     curr.left = nodeData
                     break
-                }else{  
+                }else{
                     curr = curr.left
                 }
             }else{
@@ -133,35 +149,33 @@ class Tree {
         return this.max(root.right)
     }
 
+    delete(val){
+        this.root = this.deleteFun(this.root,val)
+    }
 
-
-        delete(val){
-            this.root = this.deleteRec(this.root,val)
+    deleteFun(root,val){
+        if(root == null){
+            return root
         }
-
-        deleteRec(root,val){
-            if(root == null){
-                return root
+        if(val < root.data){
+            root.left = this.deleteFun(root.left,val)
+        }else if(val > root.data){
+            root.right = this.deleteFun(root.right,val)
+        }else{
+            if(!root.left && !root.right){
+                return null
+            }   
+            if(!root.right){
+                return root.left
+            }else if(!root.left){
+                return root.right
             }
-
-            if(root.data > val){
-                root.left = this.deleteRec(root.left,val)
-            }else if(root.data < val){
-                root.right = this.deleteRec(root.right,val)
-            }else{
-                if(!root.left && !root.right){
-                    return null
-                }
-                if(!root.right){
-                    return root.left
-                }else if(!root.left){
-                    return root.right
-                }
-                    root.data = this.min(root.right)
-                    root.right = this.deleteRec(root.right ,root.data)
-            }
-            return root 
+            root.data = this.min(root.right)
+            root.right = this.deleteFun(root.right,root.data)
         }
+        return root
+    }
+        
 }
 
 const tree = new Tree()
@@ -184,7 +198,7 @@ tree.delete(150)
 // tree.insertRecursivly(20)
 // tree.insertRecursivly(3)
 // console.log(tree.searchRecursivly(tree.root, 100));
-// console.log(tree.searchNormal(100));
+console.log(tree.search(100));
 // console.log('level wise');
 // tree.levelWise()
 
@@ -196,3 +210,7 @@ tree.inOrder(tree.root)
 // tree.postOrder(tree.root)
 
 console.log('min',tree.min(tree.root),'max',tree.max(tree.root));
+
+
+
+
