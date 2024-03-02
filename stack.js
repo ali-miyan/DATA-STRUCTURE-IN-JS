@@ -1,39 +1,39 @@
 ///////////////////////////////////////////////////STACK USING LIST/////////////////////////////////
 
-class Node{
-  constructor(data){
+class Node {
+  constructor(data) {
     this.data = data
     this.next = null
   }
 }
 
-class listStack{
-  constructor(){
+class listStack {
+  constructor() {
     this.top = null
     this.size = 0
   }
 
-  push(data){
+  push(data) {
     const nodeData = new Node(data)
-    if(this.top == null){
+    if (this.top == null) {
       this.top = nodeData
-    }else{
+    } else {
       nodeData.next = this.top
       this.top = nodeData
     }
     this.size++
   }
 
-  pop(){
+  pop() {
     this.top = this.top.next
   }
 
-  peek(){
+  peek() {
     return this.top.data
   }
-  print(){
+  print() {
     let curr = this.top
-    while(curr){
+    while (curr) {
       console.log(curr.data);
       curr = curr.next;
     }
@@ -50,7 +50,7 @@ stackList.push(15)
 stackList.pop()
 
 
-console.log(stackList.peek(),'peek');
+console.log(stackList.peek(), 'peek');
 
 stackList.print()
 
@@ -59,24 +59,24 @@ stackList.print()
 
 //////////////////////////////////////////////////////STACK USING ARRAY/////////////////////////////////////
 
-class stack{
+class stack {
   constructor() {
     this.items = []
   }
 
-  push(val){
+  push(val) {
     this.items.push(val)
   }
 
-  pop(){
+  pop() {
     return this.items.pop()
   }
 
-  peek(){
-    return this.items[this.items.length-1]
+  peek() {
+    return this.items[this.items.length - 1]
   }
 
-  print(){
+  print() {
     console.log(this.items);
   }
 
@@ -102,23 +102,23 @@ stak.print()
 
 /////////////////////////////////////leet code 20:Valid Parentheses//////////////////////////////////////////
 
-var isValid = function(s) {
+var isValid = function (s) {
   let stack = []
-  for(let i = 0; i <s.length; i++){
-      if(s[i] == '{' || s[i] == '(' || s[i] == '['){
-          stack.push(s[i])
-      }else if(s[i] == '}' && stack.length && stack[stack.length-1] == '{'){
-          stack.pop()
-      }else if(s[i] == ')' && stack.length && stack[stack.length-1] == '('){
-          stack.pop()
-      }else if(s[i] == ']' && stack.length && stack[stack.length-1] == '['){
-          stack.pop()
-      }else{
-          return false
-      }
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] == '{' || s[i] == '(' || s[i] == '[') {
+      stack.push(s[i])
+    } else if (s[i] == '}' && stack.length && stack[stack.length - 1] == '{') {
+      stack.pop()
+    } else if (s[i] == ')' && stack.length && stack[stack.length - 1] == '(') {
+      stack.pop()
+    } else if (s[i] == ']' && stack.length && stack[stack.length - 1] == '[') {
+      stack.pop()
+    } else {
+      return false
+    }
   }
-      return stack.length ===0
-  }
+  return stack.length === 0
+}
 
 
 console.log(isValid("()[]{}"))  //ANSWER

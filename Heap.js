@@ -1,86 +1,100 @@
-class heap{
-    constructor(){
+class Heap {
+    constructor() {
         this.arr = []
     }
 
-    getParent(i){
-        return Math.floor((i-1)/2)
+    getParent(i) {
+        return Math.floor(i - 1 / 2)
     }
 
-    getLeftChild(i){
-        return 2*i+1
+    getLeftChild(i) {
+        return i * 2 + 1
     }
 
-    getRightChild(i){
-        return 2*i+2
+    getRightChild(i) {
+        return i * 2 + 2
     }
 
-    swap(i,j){
+    swap(i, j) {
         let temp = this.arr[i]
         this.arr[i] = this.arr[j]
         this.arr[j] = temp
     }
 
-    insert(key){
-        this.arr[this.arr.length] = key
-        this.heapifyUp()
+    insert(data) {
+        this.arr[this.arr.length] = data
+        this.heapfyUp()
     }
-    
 
+    heapfyUp() {
+        let index = this.arr.length - 1
+        while (this.arr[index] > this.arr[this.getParent(index)]) {
+            this.swap(index, this.getParent(index))
 
-    heapifyUp(){
-        let ind = this.arr.length-1
-        while(this.arr[ind] > this.arr[this.getParent(ind)]){
-            this.swap(ind,this.getParent(ind))
-
-            ind = this.getParent(ind)
+            index = this.getParent(index)
         }
     }
 
-
-    removeRoot(){
-        if(this.arr.length == 0 ){
-            return null
-        }
+    removeRoot() {
         let root = this.arr[0]
         let last = this.arr.pop()
 
-        if(this.arr.length > 0){
+        if (this.arr.length > 0) {
             this.arr[0] = last
-            this.heapifyDown(0)
+            this.heapfyDown(0, this.arr.length)
         }
-        
+
         return root
     }
-    heapifyDown(index) {
-        let largest = index
-        let left = this.getLeftChild(largest)
-        let right = this.getRightChild(largest)
 
-        if(left < this.arr.length && this.arr[left] > this.arr[largest]){
+    heapfyDown(index, arrLength) {
+
+        let largest = index
+        let left = this.getLeftChild(index)
+        let right = this.getRightChild(index)
+
+        if (left < arrLength && this.arr[left] > this.arr[largest]) {
             largest = left
         }
 
-        if(right < this.arr.length && this.arr[right] > this.arr[largest]){
+        if (right < arrLength && this.arr[right] > this.arr[largest]) {
             largest = right
         }
 
-        if(largest !== index){
-            this.swap(index,largest)
-            this.heapifyDown(largest)
+        if (largest != index) {
+            this.swap(index, largest)
+            this.heapfyDown(largest, arrLength)
         }
-
     }
+
+    buildHeap() {
+        let length = this.arr.length
+        for (let i = Math.floor(length / 2) - 1; i >= 0; i--) {
+            this.heapfyDown(i, length)
+        }
+    }
+
+    heapSort() {
+        this.buildHeap()
+        for (let i = this.arr.length - 1; i >= 0; i--) {
+            this.swap(0, i)
+            this.heapfyDown(0, i)
+        }
+    }
+
 }
 
-const h = new heap(10)
+let heap = new Heap()
 
-h.insert(25)
-h.insert(5)
-h.insert(40)
-h.insert(70)
-h.insert(3)
-h.removeRoot()
-// h.insert(90)
-// h.insert(44)
-console.log(h.arr);
+heap.insert(100)
+heap.insert(20)
+heap.insert(35)
+heap.insert(1)
+heap.insert(9)
+heap.insert(60)
+
+// heap.removeRoot()
+
+heap.heapSort()
+
+console.log(heap.arr)

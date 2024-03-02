@@ -1,52 +1,52 @@
 //////////////////////////////////////queue using list///////////////////////////////////////////////////
 
-class Node{
-  constructor(data){
+class Node {
+  constructor(data) {
     this.data = data
     this.next = null
   }
 }
 
-class qList{
-  constructor(){
+class qList {
+  constructor() {
     this.head = null
     this.tail = null
     this.size = 0
   }
 
-  enqueue(data){
+  enqueue(data) {
     const nodeData = new Node(data)
-    if(this.head == null){
+    if (this.head == null) {
       this.head = nodeData
       this.tail = nodeData
-    }else{
+    } else {
       this.tail.next = nodeData
       this.tail = nodeData
     }
     this.size++
   }
 
-  dequeue(){
+  dequeue() {
     this.head = this.head.next
     this.size--
   }
 
-  isEmpty(){
+  isEmpty() {
     return this.size === 0
   }
 
-  getSize(){
+  getSize() {
     return this.size
   }
 
-  print(){
+  print() {
     let curr = this.head
-    while(curr){
+    while (curr) {
       console.log(curr.data);
       curr = curr.next
     }
   }
-  peek(){
+  peek() {
     return this.head.data
   }
 
@@ -61,27 +61,27 @@ listQ.dequeue()
 
 
 console.log(listQ.isEmpty());
-console.log(listQ.getSize(),'size');
-console.log(listQ.peek(),'peek');
+console.log(listQ.getSize(), 'size');
+console.log(listQ.peek(), 'peek');
 
 listQ.print()
 
 
 ////////////////////////////////////////queue using object///////////////////////////////////////////////////
 
-class queueObj{
-  constructor(){
+class queueObj {
+  constructor() {
     this.items = {}
     this.front = 0
     this.back = 0
   }
 
-  enqueue(val){
+  enqueue(val) {
     this.items[this.back] = val
     this.back++
   }
 
-  dequeue(){
+  dequeue() {
     delete this.items[this.front]
     this.front++
 
@@ -89,7 +89,7 @@ class queueObj{
 
   print() {
     console.log(this.items);
-}
+  }
 }
 
 const que = new queueObj()
@@ -105,34 +105,34 @@ que.print()
 //////////////////////////////////////////////////////////////queue using array///////////////////////////////
 
 
-class Queue{
-  constructor(){
+class Queue {
+  constructor() {
     this.items = []
   }
 
-  enqueue(val){
+  enqueue(val) {
     this.items.push(val)
   }
 
-  dequeue(){
+  dequeue() {
     return this.items.shift()
   }
 
-  isEmpty(){
+  isEmpty() {
     return this.items.length === 0
   }
 
-  size(){
+  size() {
     return this.items.length
   }
 
-  print(){
+  print() {
     console.log(this.items);
   }
 
-  reverse(){
-    if(this.size() === 0){
-      return 
+  reverse() {
+    if (this.size() === 0) {
+      return
     }
 
     let frontElement = this.dequeue()
@@ -146,7 +146,7 @@ const q = new Queue()
 q.enqueue(1)
 q.enqueue(2)
 q.enqueue(3)
-// q.dequeue()
+q.dequeue()
 console.log('emty?', q.isEmpty());
 console.log('size:', q.size());
 q.print()

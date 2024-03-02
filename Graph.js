@@ -1,56 +1,119 @@
-class Graph{
+class Graph {
     constructor() {
-        this.list = {}
+        this.list = {};
     }
 
-    addVertex(data){
-        if(!this.list[data]){
-            this.list[data] = new Set()
+    addVertex(vertex) {
+        if (!this.list[vertex]) {
+            this.list[vertex] = new Set();
         }
     }
 
-    addEdge(data1,data2){
-        if(!this.list[data1]){
-            this.addVertex(data1)
-        }
-        if(!this.list[data2]){
-            this.addVertex(data2)
-        }
-        this.list[data1].add(data2)
-        this.list[data2].add(data1)
+    addEdge(vertex, edge) {
+        this.addVertex(vertex);
+        this.addVertex(edge);
+
+        this.list[vertex].add(edge);
+        // For bidirectional
+        // this.list[edge].add(vertex);
     }
 
-    remove(vertex, edge){
-            this.list[edge].delete(vertex);
-            this.list[vertex].delete(edge);
+
+    remove(vertex, edge) {
+        this.list[vertex].delete(edge);
+        // For bidirectional
+        // this.list[edge].delete(vertex);
     }
 
-    deleteVertex(vertex){
-        if(!this.list[vertex]){
-            return
+    removeVertex(vertex) {
+        for (let val of this.list[vertex]) {
+            this.remove(vertex, val);
         }
-        for(let val of this.list[vertex]){
-            this.remove(vertex,val)
-        }
-        delete this.list[vertex]
+        delete this.list[vertex];
     }
-    
 
-    display(){
-        for(let val in this.list){
-            console.log(val + '-->' + [...this.list[val]]);
+    dfs(start) {
+        let stack = [];
+        let visited = {};
+
+        stack.push(start);
+        while (stack.length) {
+            let vertex = stack.pop();
+
+            if (!visited[vertex]) {
+                visited[vertex] = true;
+                console.log(vertex);
+
+                let nearData = this.list[vertex];
+
+                for (let val of nearData) {
+                    if (!visited[val]) {
+                        stack.push(val);
+                    }
+                }
+            }
+        }
+    }
+
+    bfs(start) {
+        let visited = {};
+        let queue = [];
+
+        visited[start] = true;
+        queue.push(start);
+
+        while (queue.length) {
+            let vertex = queue.shift();
+            console.log(vertex);
+
+            let nearData = this.list[vertex];
+
+            for (let val of nearData) {
+                if (!visited[val]) {
+                    visited[val] = true;
+                    queue.push(val);
+                }
+            }
+        }
+    }
+
+    findLargestKey() {
+        let max = 0;
+        let largest = 0;
+        for (let val in this.list) {
+            if (this.list[val]) {
+                let count = this.list[val].size;
+                if (count > max) {
+                    max = count;
+                    largest = val;
+                }
+            }
+        }
+        return largest;
+    }
+
+    display() {
+        for (let val in this.list) {
+            console.log(val + "--->" + [...this.list[val]]);
         }
     }
 }
 
-const g = new Graph()
+const graph = new Graph();
 
-g.addVertex(1)
-g.addVertex(2)
-g.addEdge(1,2)
-g.addEdge(2,3)
-// g.remove('a' , 'o')
-g.deleteVertex(2)
+graph.addEdge(1, 3);
+graph.addEdge(1, 2);
+graph.addEdge(2, 4);
+graph.addEdge(3, 5);
 
-g.display()
+// graph.remove(1, 2);
+// graph.removeVertex(5);
 
+graph.dfs(1);
+console.log('/////////////////////////////////////////////');
+graph.bfs(1);
+
+
+graph.display();
+
+console.log(graph.findLargestKey());

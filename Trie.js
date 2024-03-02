@@ -1,72 +1,92 @@
-
-class Node{
+class Node {
     constructor() {
         this.children = {}
-        this.end = false
+        this.isEnd = false
     }
 }
 
-class Trie{
+class Trie {
     constructor() {
         this.root = new Node()
     }
 
-    insert(word){
+    insert(word) {
         let curr = this.root
-        for(let val of word){
-            if(!curr.children[val]){
+        for (let val of word) {
+            if (!curr.children[val]) {
                 curr.children[val] = new Node()
             }
             curr = curr.children[val]
         }
-        curr.end = true
+        curr.isEnd = true
     }
 
-    show(search){
+    startWithPrefix(word) {
         let curr = this.root
-        for(let val of search){
-            if(!curr.children[val]){
+        for (let val of word) {
+            if (!curr.children[val]) {
+                return 'no matching prefix'
+            }
+            curr = curr.children[val]
+        }
+        this.display(curr, word)
+
+    }
+
+    display(root, prefix = '') {
+        if (root.isEnd) {
+            console.log(prefix)
+        }
+        for (let val in root.children) {
+            this.display(root.children[val], prefix + val)
+        }
+    }
+
+    delete(word) {
+        this.deleteHelper(this.root, word, 0)
+    }
+
+    deleteHelper(root, word, level) {
+        if (root == null) {
+            return true
+        }
+
+        if (word.length == level) {
+            if (root.isEnd) {
+                root.isEnd = false
+            }
+            return Object.keys(root.children).length == 0
+        }
+
+        let child = root.children[word[level]]
+        let deleted = this.deleteHelper(child, word, level + 1)
+
+        if (deleted) {
+            delete root.children[word[level]]
+        }
+        return false
+    }
+
+    search(word) {
+        let curr = this.root
+        for (let val of word) {
+            if (!curr.children[val]) {
                 return false
             }
-            curr = curr.children[val];
+            curr = curr.children[val]
         }
         return true
     }
-
-    printAllWords(node, prefix = '') {
-       if(node.end){
-        console.log(prefix); 
-       } 
-       for(let char in node.children){
-            this.printAllWords(node.children[char] , prefix + char)
-       }
-    } 
-
-    printWordsStartingWith(prefix) {
-        let curr = this.root;
-        for(let char of prefix){
-            if(!curr.children[char]){
-                console.log('not matching any word');
-                return
-            }
-            curr = curr.children[char]
-        }
-        this.printAllWords(curr,prefix)
-    }
 }
 
+const trie = new Trie()
 
+trie.insert('apple')
+trie.insert('banana')
+trie.insert('app')
+console.log(trie.search('app'))
 
-const trie = new Trie();
-trie.insert("apple");  
-trie.insert("ali");  
-trie.insert("appoooo"); 
-// trie.insert("orange"); 
-// trie.show()/
-console.log(trie.show("www"));   // Output:
+trie.delete('app')
+trie.startWithPrefix('b')
 
-trie.printAllWords(trie.root)
-trie.printWordsStartingWith('app')
-// console.log(trie.search("app"));     // Output: false
-// trie.insert("app");
-// console.log(trie.search("app"));     // Output: true
+trie.display(trie.root)

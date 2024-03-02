@@ -1,8 +1,8 @@
 class Node {
     constructor(data) {
         this.data = data
-        this.left = null
         this.right = null
+        this.left = null
     }
 }
 
@@ -11,206 +11,170 @@ class Tree {
         this.root = null
     }
 
-    isEmpty() {
-        return this.root == null
-    }
-
-    // insertRecursivly(data) {
-    //     const nodeData = new Node(data)
-    //     if (this.isEmpty()) {
-    //         this.root = nodeData
-    //     } else {
-    //         this.insertFunction(this.root, nodeData)
-    //     }
-    // }
-
-    // insertFunction(subRoot, node) {
-    //     if (node.data < subRoot.data) {
-    //         if (subRoot.left == null) {
-    //             subRoot.left = node
-    //         } else {
-    //             this.insertFunction(subRoot.left, node)
-    //         }
-    //     } else {
-    //         if (subRoot.right == null) {
-    //             subRoot.right = node
-    //         } else {
-    //             this.insertFunction(subRoot.right, node)
-    //         }
-    //     }
-    // }
-
-    // searchRecursivly(root, val) {
-    //     if (!root) {
-    //         return false
-    //     }
-    //     if (root.data == val) {
-    //         return true
-    //     } else if (root.data < val) {
-    //         return this.search(root.left, val)
-    //     } else {
-    //         return this.search(root.right, val)
-    //     }
-    
-    // }
-
-    search(data){
-        let curr = this.root
-        while(curr){
-            if(curr.data == data){
-                return true
-            }else if(data < curr.data){
-                curr = curr.left
-            }else{
-                curr = curr.right
-            }
-        }
-        return false
-    }
-
-    insertNormal(data) {
-        let nodeData = new Node(data)
-        if(this.root == null){
+    insert(data) {
+        const nodeData = new Node(data)
+        if (!this.root) {
             this.root = nodeData
             return
         }
         let curr = this.root
-
-        while(true){
-            if(curr.data > data){
-                if(curr.left == null){  
+        while (curr) {
+            if (curr.data > data) {
+                if (curr.left == null) {
                     curr.left = nodeData
                     break
-                }else{
+                } else {
                     curr = curr.left
                 }
-            }else{
-                if(curr.right == null){
+            } else {
+                if (curr.right == null) {
                     curr.right = nodeData
                     break
-                }else{
+                } else {
                     curr = curr.right
                 }
             }
         }
     }
+    inOrder(root) {
+        if (root) {
+            this.inOrder(root.left)
+            console.log(root.data)
+            this.inOrder(root.right)
+        }
+    }
 
-    
-
-    preOrder(root){
-        if(root){
-            console.log(root.data);
+    preOrder(root) {
+        if (root) {
+            console.log(root.data)
             this.preOrder(root.left)
             this.preOrder(root.right)
         }
     }
-    inOrder(root){
-        if(root){
-            this.preOrder(root.left)
-            console.log(root.data);
-            this.preOrder(root.right)
-        }
-    }
-    postOrder(root){
-        if(root){
-            this.preOrder(root.left)
-            this.preOrder(root.right)
-            console.log(root.data);
+
+    postOrder(root) {
+        if (root) {
+            this.postOrder(root.left)
+            this.postOrder(root.right)
+            console.log(root.data)
         }
     }
 
-
-    levelWise(){
-        let queue = []
-        queue.push(this.root)
-        while(queue.length){
-            let curr = queue.shift()
-            console.log(curr.data);
-            if(curr.left){
-                queue.push(curr.left)
-            }
-            if(curr.right){
-                queue.push(curr.right)
-            }
+    search(val) {
+        let curr = this.root
+        while (curr) {
+            if (curr.data == val) return true
+            else if (curr.data > val) curr = curr.left
+            else curr = curr.right
         }
+        return false
     }
-
-    min(root){
-        if(!root.left){
+    min(root) {
+        if (!root.left) {
             return root.data
         }
         return this.min(root.left)
     }
 
-    max(root){
-        if(!root.right){
+    max(root) {
+        if (!root.right) {
             return root.data
         }
         return this.max(root.right)
     }
 
-    delete(val){
-        this.root = this.deleteFun(this.root,val)
+    levelWise() {
+        let queue = []
+        queue.push(this.root)
+
+        while (queue.length) {
+            let curr = queue.shift()
+            console.log(curr.data)
+            if (curr.left) {
+                queue.push(curr.left)
+            }
+            if (curr.right) {
+                queue.push(curr.right)
+            }
+        }
     }
 
-    deleteFun(root,val){
-        if(root == null){
+    delete(val) {
+        this.root = this.delHelper(this.root, val)
+    }
+
+    delHelper(root, val) {
+        if (root == null) {
             return root
         }
-        if(val < root.data){
-            root.left = this.deleteFun(root.left,val)
-        }else if(val > root.data){
-            root.right = this.deleteFun(root.right,val)
-        }else{
-            if(!root.left && !root.right){
+        if (root.data > val) {
+            root.left = this.delHelper(root.left, val)
+        } else if (root.data < val) {
+            root.right = this.delHelper(root.right, val)
+        } else {
+            if (!root.right && !root.left) {
                 return null
-            }   
-            if(!root.right){
+            }
+            if (!root.right) {
                 return root.left
-            }else if(!root.left){
+            } else if (!root.left) {
                 return root.right
             }
             root.data = this.min(root.right)
-            root.right = this.deleteFun(root.right,root.data)
+            root.right = this.delHelper(root.right, root.data)
         }
         return root
     }
-        
+
+    findSecondLargest() {
+
+        if (!this.root) return false
+
+        let curr = this.root
+        let secondLargest = null
+        let stack = []
+
+        while (curr || stack.length) {
+            while (curr) {
+                stack.push(curr)
+                curr = curr.right
+            }
+
+            curr = stack.pop()
+
+            if (!secondLargest) {
+                secondLargest = curr.data
+            } else if (secondLargest < curr.data) {
+                secondLargest = curr.data
+            }
+            curr = curr.left
+        }
+        return secondLargest
+    }
+
 }
 
 const tree = new Tree()
-tree.insertNormal(100)
-tree.insertNormal(50)
-tree.insertNormal(30)
-tree.insertNormal(150)
-tree.insertNormal(130)
-tree.insertNormal(200)
 
+tree.insert(10)
+tree.insert(8)
+tree.insert(2)
+tree.insert(9)
+tree.insert(30)
+tree.insert(20)
+tree.insert(40)
 
-// console.log(tree.searchNormal(222));
-tree.delete(150)
+tree.delete(2)
 
-// tree.removeLeaf(tree.root,30)
+console.log(tree.findSecondLargest(), 'largest')
 
-// console.log(tree.isEmpty());
+console.log(tree.search(30))
 
-// tree.insertRecursivly(10)
-// tree.insertRecursivly(20)
-// tree.insertRecursivly(3)
-// console.log(tree.searchRecursivly(tree.root, 100));
-console.log(tree.search(100));
-// console.log('level wise');
-// tree.levelWise()
-
-// console.log('preOrder');                        ///////ROOT,LEFT,RIGHT
-// tree.preOrder(tree.root) 
-console.log('inOrder');                            ///////LEFT,ROOT,RIGHT
 tree.inOrder(tree.root)
-// console.log('postOrder');                       ///////LEFT,RIGHT,ROOT
-// tree.postOrder(tree.root)
-
-console.log('min',tree.min(tree.root),'max',tree.max(tree.root));
-
+tree.preOrder(tree.root)
+tree.postOrder(tree.root)
+tree.levelWise()
 
 
-
+console.log(tree.min(tree.root))
+console.log(tree.max(tree.root))

@@ -1,7 +1,7 @@
 
 /////////////////////////////////////LEET CODE 2418:SORT THE PEOPLE//////////////////////////////////////////
 
-var sortPeople = function(names, heights) {
+var sortPeople = function (names, heights) {
     let temp;
     let tempHeight;
 
@@ -22,18 +22,18 @@ var sortPeople = function(names, heights) {
     return names;
 };
 
-console.log(sortPeople(["Mary","John","Emma"],[180,165,170]));
+console.log(sortPeople(["Mary", "John", "Emma"], [180, 165, 170]));
 //Output: ["Mary","Emma","John"]
 //Explanation: Mary is the tallest, followed by Emma and John.
 
 /////////////////////////////////LEET CODE: 2176. Count Equal and Divisible Pairs in an Array/////////////////
 
-var countPairs = function(nums, k) {
+var countPairs = function (nums, k) {
     let count = 0
-    for(let i = 0; i < nums.length; i++){
-        for(let j = i+1; j < nums.length; j++){
-            if(nums[i] == nums [j]){
-                if(i*j%k ==0){
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] == nums[j]) {
+                if (i * j % k == 0) {
                     count++
                 }
             }
@@ -42,7 +42,7 @@ var countPairs = function(nums, k) {
     return count
 };
 
-console.log(countPairs([3,1,2,2,2,1,3],2));//Output: 4
+console.log(countPairs([3, 1, 2, 2, 2, 1, 3], 2));//Output: 4
 // Explanation:
 // There are 4 pairs that meet all the requirements:
 // - nums[0] == nums[6], and 0 * 6 == 0, which is divisible by 2.
