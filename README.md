@@ -15,6 +15,12 @@ This repository contains JavaScript implementations of fundamental data structur
 - Trees
 - Graphs
 - Hash Tables
+- Heap
+- Trie
+- Sorting
+- Recusrion
+- String
+- Binary search
 
 Each data structure is implemented with clear explanations and examples to help you understand and practice using them effectively.
 
