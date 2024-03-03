@@ -50,4 +50,20 @@ console.log(countPairs([3, 1, 2, 2, 2, 1, 3], 2));//Output: 4
 // - nums[2] == nums[4], and 2 * 4 == 8, which is divisible by 2.
 // - nums[3] == nums[4], and 3 * 4 == 12, which is divisible by 2.
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////LEET CODE:3028. Ant on the Boundary//////////////////////////////////////////////////////
+
+var returnToBoundaryCount = function(nums) {
+    let sum = 0
+    let count = 0
+    for(let i = 0; i < nums.length; i++){
+        sum += nums[i]
+        if (sum === 0) count++;
+    }
+
+    return count
+
+};
+
+console.log(returnToBoundaryCount([2,3,-5])) //OUTPUT 1
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
