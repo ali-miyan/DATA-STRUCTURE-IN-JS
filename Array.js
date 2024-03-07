@@ -50,7 +50,7 @@ console.log(countPairs([3, 1, 2, 2, 2, 1, 3], 2));//Output: 4
 // - nums[2] == nums[4], and 2 * 4 == 8, which is divisible by 2.
 // - nums[3] == nums[4], and 3 * 4 == 12, which is divisible by 2.
 
-//////////////////////////////////////////////LEET CODE:3028. Ant on the Boundary//////////////////////////////////////////////////////
+//////////////////////////////////////LEET CODE:3028. Ant on the Boundary/////////////////////////////////////////
 
 var returnToBoundaryCount = function(nums) {
     let sum = 0
@@ -66,4 +66,27 @@ var returnToBoundaryCount = function(nums) {
 
 console.log(returnToBoundaryCount([2,3,-5])) //OUTPUT 1
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////LEET CODE:1652. Defuse the Bomb/////////////////////////////////////
+
+
+var decrypt = function(code, k) {
+    let arr = []
+    for(let j = 0; j < code.length; j++){
+        let sum = 0;
+        if (k > 0) {
+            for (let i = 0; i < k; i++) {
+                sum += code[(j + i + 1) % code.length];
+            }
+        } else {
+            for (let i = 0; i > k; i--) {
+                sum += code[(j + i - 1 + code.length) % code.length];
+            }
+        }
+        arr.push(sum)
+    }
+
+    return arr
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
