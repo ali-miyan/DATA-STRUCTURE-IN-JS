@@ -126,32 +126,6 @@ class Tree {
         return root
     }
 
-    findSecondLargest() {
-
-        if (!this.root) return false
-
-        let curr = this.root
-        let secondLargest = null
-        let stack = []
-
-        while (curr || stack.length) {
-            while (curr) {
-                stack.push(curr)
-                curr = curr.right
-            }
-
-            curr = stack.pop()
-
-            if (!secondLargest) {
-                secondLargest = curr.data
-            } else if (secondLargest < curr.data) {
-                secondLargest = curr.data
-            }
-            curr = curr.left
-        }
-        return secondLargest
-    }
-
 }
 
 const tree = new Tree()
@@ -164,17 +138,37 @@ tree.insert(30)
 tree.insert(20)
 tree.insert(40)
 
-tree.delete(2)
-
-console.log(tree.findSecondLargest(), 'largest')
-
-console.log(tree.search(30))
-
-tree.inOrder(tree.root)
-tree.preOrder(tree.root)
-tree.postOrder(tree.root)
-tree.levelWise()
+// tree.delete(2)
 
 
-console.log(tree.min(tree.root))
-console.log(tree.max(tree.root))
+// console.log(tree.search(30))
+
+// tree.inOrder(tree.root)
+// tree.preOrder(tree.root)
+// tree.postOrder(tree.root)
+// tree.levelWise()
+
+
+// console.log(tree.min(tree.root))
+// console.log(tree.max(tree.root))
+
+
+///////////////////////////////////////////////LEET CODE:938. Range Sum of BST/////////////////////////////////
+
+
+var rangeSumBST = function(root, low, high) {
+    let sum = 0
+    if(root){
+            if(root.data >= low && root.data <= high) {
+                sum += root.data
+            }
+            sum += rangeSumBST(root.left,low,high)
+            sum += rangeSumBST(root.right,low,high)
+        }
+
+        return sum
+};
+
+console.log(rangeSumBST(tree.root,7,15),'range sum of bst');
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
