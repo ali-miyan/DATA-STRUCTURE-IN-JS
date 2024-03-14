@@ -134,4 +134,21 @@ for (let i = 0; i < arr.length; i++) {
 console.log(arr);
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////LEET CODE:344. Reverse String////////////////////////////////////////
+
+
+var reverseString = function(s) {
+  let start = 0;
+  let end = s.length - 1;
+  
+  while (start <= end) {
+    [s[start], s[end]] = [s[end], s[start]];
+      start++;
+      end--;
+  }
+
+  console.log(s)
+};
+
+reverseString(['h','e','l','l','e']);
+
