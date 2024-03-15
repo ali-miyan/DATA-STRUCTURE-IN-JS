@@ -150,5 +150,5 @@ var reverseString = function(s) {
   console.log(s)
 };
 
-reverseString(['h','e','l','l','e']);
+reverseString(['h','e','l','l','o']);
 

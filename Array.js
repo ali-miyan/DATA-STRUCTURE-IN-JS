@@ -89,4 +89,31 @@ var decrypt = function(code, k) {
 };
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////FIND THE SECOND LARGEST AND LEAST IN AN ARRAY//////////////////////////////
+
+
+let arr = [5,3,1,6,4,21,5]
+let largest = 0;
+let secondLargest = 0
+let secondsmallest = Infinity
+let smallest = Infinity
+
+for(let i = 0; i < arr.length-1; i++){
+        if(largest < arr[i]){
+            largest = arr[i]
+        }
+        if(smallest > arr[i]){
+            smallest = arr[i]
+        }
+}
+
+for(let i = 0; i < arr.length-1; i++){
+        if(secondLargest < arr[i] && arr[i] !== largest){
+            secondLargest = arr[i]
+        }
+        if(secondsmallest > arr[i] && arr[i] !== smallest){
+            secondsmallest = arr[i]
+        }
+}
+
+console.log(secondLargest,secondsmallest)
