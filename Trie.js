@@ -75,7 +75,9 @@ class Trie {
             }
             curr = curr.children[val]
         }
-        return true
+
+        if (curr.isEnd)return true
+        else return false
     }
 }
 
@@ -84,9 +86,11 @@ const trie = new Trie()
 trie.insert('apple')
 trie.insert('banana')
 trie.insert('app')
-console.log(trie.search('app'))
 
-trie.delete('app')
-trie.startWithPrefix('b')
+console.log(trie.search('apple'));
+// console.log(trie.search('app'))
+
+// trie.delete('app')
+// trie.startWithPrefix('b')
 
 trie.display(trie.root)
