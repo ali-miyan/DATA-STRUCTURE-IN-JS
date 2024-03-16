@@ -117,3 +117,30 @@ for(let i = 0; i < arr.length-1; i++){
 }
 
 console.log(secondLargest,secondsmallest)
+
+
+///////////////////////////////////////////LEET CODE:238. Product of Array Except Self////////////////////////
+
+var productExceptSelf = function(nums) {
+
+    const result = new Array(nums.length).fill(1);
+    
+    let prefixProduct = 1;
+    for (let i = 0; i < nums.length; i++) {
+        result[i] *= prefixProduct;
+        prefixProduct *= nums[i];
+    }
+
+    let suffixProduct = 1;
+    for (let i = nums.length - 1; i >= 0; i--) {
+        result[i] *= suffixProduct;
+        suffixProduct *= nums[i];
+    }
+
+    return result;
+};
+
+console.log(productExceptSelf([1,2,3,4]));
+// Output: [24,12,8,6]
+
+//////////////////////////////////////////////////////////////////////////////////////////
