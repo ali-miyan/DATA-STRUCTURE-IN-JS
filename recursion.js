@@ -81,3 +81,21 @@ function factorial(arr, index = 0) {
 console.log(factorial([1, 2, 3, 4, 5, 6, 7]));
 
 
+///////////////////////////////////////CHECK WHETHER STRING IS PALINDROME OR NOT///////////////////////////////
+
+function isPalindrome(str) {
+
+  if (str.length <= 1) {
+    return true;
+  }
+
+  if (str[0] !== str[str.length - 1]) {
+    return false;
+  }
+
+  return isPalindrome(str.substring(1, str.length - 1));
+  
+}
+
+console.log(isPalindrome("madam")); // true
+console.log(isPalindrome("hello")); // false

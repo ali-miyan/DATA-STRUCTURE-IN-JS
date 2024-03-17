@@ -248,6 +248,32 @@ var areOccurrencesEqual = function (s) {
 };
 
 console.log(areOccurrencesEqual('abacbc'));//Output: true
-//Explanation: The characters that appear in s are 'a', 'b', and 'c'. All characters occur 2 times in s.
 
-////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////LEET CODE:961. N-Repeated Element in Size 2N Array////////////////////////////
+
+
+var repeatedNTimes = function(nums) {
+  let map = new Map()
+  for(let val of nums){
+      if(map.has(val)){
+          map.set(val,map.get(val)+1)
+      }else{
+          map.set(val,1)
+      }
+  }
+
+  let result = 0
+  let maxKey;
+
+  for(let [key,value] of map){
+      if(value > result){
+          result = value
+          maxKey = key;
+      }
+  }
+
+  return maxKey
+};
+
+console.log(repeatedNTimes([1,2,3,3]));//Output: 3
