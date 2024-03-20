@@ -99,16 +99,16 @@ class linkedList{
 }
 
 const list = new linkedList()
-list.insertData(1)
-list.insertData(2)
-list.insertData(3)
-list.insertData(4)
-list.search(22)
-list.deleteVal(29)
-list.findMiddle()
-list.deleteLast()
+// list.insertData(1)
+// list.insertData(2)
+// list.insertData(3)
+// list.insertData(4)
+// list.search(22)
+// list.deleteVal(29)
+// list.findMiddle()
+// list.deleteLast()
 
-list.print()
+// list.print()
 
 
 
@@ -134,6 +134,7 @@ class Node{
       this.tail = nodeData
     }else{
       nodeData.next = this.head
+      this.head.prev = nodeData;
       this.head = nodeData
     }
   }
@@ -275,22 +276,6 @@ class Node{
     prev.next = curr.next
   }
   
-  putAfterandBefore(tar,data){
-    const nodeData1 = new Node(data)
-  
-    let curr = this.head
-    while(curr){
-      if(curr && curr.data === tar){
-        let store1 = curr.prev
-        curr.prev = nodeData1
-        nodeData1.prev = store1
-        nodeData1.next = curr
-        store1.next = nodeData1
-      }
-      curr = curr.next
-    }
-  }
-  
   print(){
       let curr = this.head
       while(curr){
@@ -303,11 +288,11 @@ class Node{
   const list2 = new linkedList2()
   
   
-  // list2.insertData(1)
-  // list2.insertData(2)
-  // list2.insertData(3)
-  // list2.insertData(4)
-  // list2.insertData(5)
+  list2.insertData(1)
+  list2.insertData(2)
+  list2.insertData(3)
+  list2.insertData(4)
+  list2.insertData(5)
     
   // list2.deleteFirst()
   // // list2.deleteLast()
@@ -318,7 +303,6 @@ class Node{
   // list2.removeConsicutiveDuplicates()
   
   // list2.putAfter(3,100)
-  // list2.putAfterandBefore(3,500)
   // list2.putBefore(3,120)
   // list2.insertMiddle(100)
   // list2.middleMan(99)
@@ -329,7 +313,8 @@ class Node{
   // list2.print()
   // console.log('reversed');
   // list2.printReverseSingle()
-  // list2.print()
+  // list2.printReverse()
+  list2.print()
 
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
