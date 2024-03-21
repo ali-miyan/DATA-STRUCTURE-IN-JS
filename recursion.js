@@ -99,3 +99,20 @@ function isPalindrome(str) {
 
 console.log(isPalindrome("madam")); // true
 console.log(isPalindrome("hello")); // false
+
+////////////////////////////////////////LEET CODE:258. Add Digits//////////////////////////////////////////////
+
+var addDigits = function(num) {
+    
+  if(String(num).length === 1)return num
+  let arr = [...String(num)].map(Number);
+
+  let sum = 0
+  for(let i = 0; i < arr.length; i++){
+      sum += arr[i]
+  }
+
+  return addDigits(sum)
+};
+
+console.log(addDigits(38)) //Output: 2
