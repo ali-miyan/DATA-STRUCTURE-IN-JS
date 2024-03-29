@@ -143,4 +143,34 @@ var productExceptSelf = function(nums) {
 console.log(productExceptSelf([1,2,3,4]));
 // Output: [24,12,8,6]
 
-//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////3079. Find the Sum of Encrypted Integers//////////////////////////////////
+
+var sumOfEncryptedInt = function(nums) {
+
+    let encrypt = (num) => {
+        let largest = 0;
+        let split = num.toString().split('')
+        for(let i = 0; i < split.length; i++){
+            if(largest < Number(split[i])){
+                largest = Number(split[i])
+            }
+        }
+    return new Array(split.length).fill(largest);
+
+    }
+    let sum = 0
+    let arr = []
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i].toString().length !== 1){
+            arr = encrypt(nums[i])
+            sum += Number(arr.join(''))
+        }else{
+            sum += nums[i]
+        }
+    }
+
+    return sum
+};
+
+
+console.log(sumOfEncryptedInt([10,21,31]));//Output: 66

@@ -303,3 +303,4 @@ var findDifference = function(nums1, nums2) {
 };
 
 console.log(findDifference([1,2,3],[2,4,6]));//Output: [[1,3],[4,6]]
+  
