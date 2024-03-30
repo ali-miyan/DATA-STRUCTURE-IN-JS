@@ -303,4 +303,27 @@ var findDifference = function(nums1, nums2) {
 };
 
 console.log(findDifference([1,2,3],[2,4,6]));//Output: [[1,3],[4,6]]
+
+
+
+///////////////////////////////////////LEET CODE : 137. Single Number II///////////////////////////////////////
+
+var singleNumber = function(nums) {
+
+  let map = new Map()
+
+  for (const num of nums) {
+      map.set(num, (map.get(num) || 0) + 1);
+  }
+
+  for (const [num, count] of map) {
+      if (count === 1) {
+          return num;
+      }
+  }
+
+  return -1;
+};
+
+console.log([1,2,1,3,2]);//output:3
   
