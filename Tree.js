@@ -171,4 +171,25 @@ var rangeSumBST = function(root, low, high) {
 
 console.log(rangeSumBST(tree.root,7,15),'range sum of bst');
 
+////////////////////////////////////////////LEET CODE:404. Sum of Left Leaves////////////////////////////////////
+
+var sumOfLeftLeaves = function (root) {
+    let sum = 0;
+    
+    const traverse = (node, isLeft) => {
+        if (!node) return;
+        
+        if (!node.left && !node.right && isLeft) {
+            sum += node.val;
+        }
+        
+        traverse(node.left, true);
+        traverse(node.right, false);
+    };
+    
+    traverse(root, false);
+    
+    return sum;
+};
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
