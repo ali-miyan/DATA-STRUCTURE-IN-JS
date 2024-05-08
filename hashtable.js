@@ -1,51 +1,60 @@
 /////////////////////////////////////////////////////// HASH TABLE //////////////////////////////////
-
-class hashTable {
-  constructor(size) {
-    this.items = Array(size)
-    this.size = size
+class Table{
+  constructor(){
+      this.table = {}
   }
-
-  hash(key) {
-    let hashKey = key.toString()
-    let hashedVal = 0
-    for (let i = 0; i < hashKey.length; i++) {
-      hashedVal += hashKey.charCodeAt(i)
-    }
-    return hashedVal % this.size
-  }
-
-  set(key, val) {
-    const index = this.hash(key)
-    this.items[index] = val
-  }
-
-  get(key) {
-    const index = this.hash(key)
-    return this.items[index]
-  }
-
-  remove(key) {
-    const index = this.hash(key)
-    delete this.items[index]
-  }
-
-  print() {
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i]) {
-        console.log(i, this.items[i]);
-
+  
+  hash(key){
+      let realKey = key.toString()
+      let hashedVal = 0
+      
+      for(let i = 0; i < realKey.length; i++){
+          hashedVal += realKey.charCodeAt(i)
       }
-    }
+      return hashedVal
+  }
+  
+  set(key,value){
+      const index = this.hash(key)
+      if(!this.table[index]){
+          this.table[index] = []
+      }
+      
+      this.table[index].push({key,value})
+  }
+  
+  get(key){
+      const index = this.hash(key)
+      let bucket = this.table[index]
+      if(bucket){
+          for(let items of bucket){
+              if(items.key == key){
+                  return items.value
+              }
+          }
+      }
+      return undefined
+  }
+  
+  remove(key){
+      const index = this.hash(key)
+      const bucket = this.table[index] 
+      
+      if(bucket){
+          const bucketIndex = bucket.findIndex(item => item.key === key)
+          if(bucketIndex != -1){
+              bucket.splice(bucketIndex,1)
+          }
+      }
   }
 
 }
 
-const hash = new hashTable(50)
+
+const hash = new Table(50)
 
 hash.set('ali', 'miyan')
 console.log(hash.get('ali'));
-hash.print()
 
 let arr = [1, 3, 4, 4, 4, 5, 122, 4, 6, 7]
 let ind = 0
@@ -64,7 +73,6 @@ hash.set('name', 'ali')
 hash.set('age', 87)
 console.log(hash.get('name'));
 console.log(hash.get('age'));
-hash.print()
 
 
 

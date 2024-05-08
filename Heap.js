@@ -28,7 +28,7 @@ class Heap {
 
     heapfyUp() {
         let index = this.arr.length - 1
-        while (this.arr[index] > this.arr[this.getParent(index)]) {
+        while (this.arr[index] < this.arr[this.getParent(index)]) {
             this.swap(index, this.getParent(index))
 
             index = this.getParent(index)
@@ -53,11 +53,11 @@ class Heap {
         let left = this.getLeftChild(index)
         let right = this.getRightChild(index)
 
-        if (left < arrLength && this.arr[left] > this.arr[largest]) {
+        if (left < arrLength && this.arr[left] < this.arr[largest]) {
             largest = left
         }
 
-        if (right < arrLength && this.arr[right] > this.arr[largest]) {
+        if (right < arrLength && this.arr[right] < this.arr[largest]) {
             largest = right
         }
 
@@ -93,7 +93,7 @@ heap.insert(1)
 heap.insert(9)
 heap.insert(60)
 
-// heap.removeRoot()
+heap.removeRoot()
 
 heap.heapSort()
 
