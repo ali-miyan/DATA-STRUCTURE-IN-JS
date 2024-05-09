@@ -39,10 +39,10 @@ class Graph {
         stack.push(start);
         while (stack.length) {
             let vertex = stack.pop();
+            console.log(vertex);
 
             if (!visited[vertex]) {
                 visited[vertex] = true;
-                console.log(vertex);
 
                 let nearData = this.list[vertex];
 
