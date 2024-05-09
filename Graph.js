@@ -55,27 +55,29 @@ class Graph {
         }
     }
 
-    bfs(start) {
-        let visited = {};
-        let queue = [];
-
-        visited[start] = true;
-        queue.push(start);
-
-        while (queue.length) {
-            let vertex = queue.shift();
-            console.log(vertex);
-
-            let nearData = this.list[vertex];
-
-            for (let val of nearData) {
-                if (!visited[val]) {
-                    visited[val] = true;
-                    queue.push(val);
+    bfs(start){
+    let queue = []
+    let visited = {}
+    queue.push(start)
+    
+    while(queue.length){
+        const vertex = queue.shift()
+        console.log(vertex)
+        
+        if(!visited[vertex]){
+            visited[vertex] = true
+        
+        const nearData = this.table[vertex]
+        
+        for(let val of nearData){
+            if(!visited[val]){
+                queue.push(val)
                 }
             }
         }
     }
+}
+
 
     findLargestKey() {
         let max = 0;
