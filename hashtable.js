@@ -334,4 +334,33 @@ var singleNumber = function(nums) {
 };
 
 console.log([1,2,1,3,2]);//output:3
-  
+
+
+/////////////////////////////////////////////LEET CODE :3146. Permutation Difference between Two Strings/////////////////////
+
+var findPermutationDifference = function(s, t) {
+    let map = new Map()
+    let map2 = new Map()
+
+    let sum = 0
+
+    for(let i = 0; i < s.length; i++){
+        map.set(s[i],i)
+    }
+
+    for(let i = 0; i < t.length; i++){
+        map2.set(t[i],i)
+    }
+
+    for(let i = 0; i < t.length; i++){
+        let a = map.get(s[i])
+        let b = map2.get(s[i])
+        sum += Math.abs(a-b)
+    }
+
+
+    return sum
+};
+
+
+  console.log(findPermutationDifference("abc","bac"))//Output: 2
