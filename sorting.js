@@ -101,7 +101,7 @@ console.log(arr);
 
 
 // insertion sort
-for (let i = 0; i < arr.length; i++) {
+for (let i = 1; i < arr.length; i++) {
   let numToInsert = arr[i]
   let j = i - 1
   while (j >= 0 && arr[j] > numToInsert) {
