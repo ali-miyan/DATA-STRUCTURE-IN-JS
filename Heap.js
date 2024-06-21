@@ -4,7 +4,7 @@ class Heap {
     }
 
     getParent(i) {
-        return Math.floor(i - 1 / 2)
+        return Math.floor((i - 1) / 2)
     }
 
     getLeftChild(i) {
@@ -28,7 +28,7 @@ class Heap {
 
     heapfyUp() {
         let index = this.arr.length - 1
-        while (this.arr[index] < this.arr[this.getParent(index)]) {
+        while (this.arr[index] > this.arr[this.getParent(index)]) {
             this.swap(index, this.getParent(index))
 
             index = this.getParent(index)
